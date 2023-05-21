@@ -19,7 +19,8 @@ const Application = () => {
         <button>Info</button>
         <div><Link to={`/application/${authorizedUser.id}/todos`}>Todos</Link></div>
         <div><Link to={`/application/${authorizedUser.id}/posts`}>Posts</Link></div>
-        <button>Albums</button>
+        <div><Link to={`/application/${authorizedUser.id}/albums`}>Albums</Link></div>
+        
       </div>
       {/* הצגת התוכן המתאים לכל כפתור / לינק */}
     </div>

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 export default function Todos () {
     const [todos, setTodos] = useState([]);
     const [selector, setSelector] = useState('');
+    const [isChecked, setIsChecked] = useState(false);
     const authorizedUser = JSON.parse(localStorage.getItem('authorizedUser'));
     const id= authorizedUser.id;
     useEffect(  ()=> {
@@ -75,22 +76,29 @@ export default function Todos () {
       return (
         <div>
           <h2>Todos</h2>
-          <ul>
-            {todos.map((todo) => (
-              <li key={todo.id}>
-                "id": {todo.id} <br />
-                "title": {todo.title}
-                <br />
-                "completed": {todo.completed ? 'true' : 'false'} <br />
-              </li>
-            ))}
-          </ul>
           <select value={selector} onChange={(e) => setSelector(e.target.value)}>
             <option value="serial">serial</option>
             <option value="random">random</option>
             <option value="performance">performance</option>
             <option value="alphabetical">alphabetical</option>
           </select>
+          <ul>
+            {todos.map((todo) => (
+              <li  key={todo.id} >
+                {/* {todo.title} */}
+                
+                <label>
+                   <input type="checkbox" checked={isChecked}   onChange={() => setIsChecked((prev) => !prev)}/>
+                    <span>{todo.title}</span>
+                       </label>
+                 
+                
+                <br />
+                {/* "completed": {todo.completed ? 'true' : 'false'} <br /> */}
+              </li>
+            ))}
+          </ul>
+          
         </div>
       );
     

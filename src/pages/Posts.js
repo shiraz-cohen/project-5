@@ -106,7 +106,6 @@ export default function Posts () {
               style={{
                 fontWeight: selectedPostId === post.id ? 'bold' : 'normal',
               }}>
-              "id": {post.id} <br />
               "title": {post.title}<br />
               "body": {post.body} <br />
             </span>
@@ -114,7 +113,7 @@ export default function Posts () {
               <ul>
                 {comments.map((comment) => (
                   <li key={comment.id}>
-                    "id": {comment.id} <br />
+                   
                     "name": {comment.name}<br />
                     "email": {comment.email}<br/>
                     "body": {comment.body} <br />
