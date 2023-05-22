@@ -1,30 +1,41 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import  { useState, createContext, useContext } from 'react';
+import { Link,useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { UserContext } from "../App";
 
-const Application = () => {
-  const authorizedUser = JSON.parse(localStorage.getItem('authorizedUser'));
+export default function Application ()  {
+  const { id } = useParams();
+  const authorizedUser = useContext(UserContext);
+  const navigate=useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem('authorizedUser');
-    window.location.href = '/Login'; // הפניה לעמוד הכניסה
+    navigate(`/`); // הפניה לעמוד הכניסה
   };
 
   return (
-    <div>
-      <h2>Welcome, {authorizedUser.name}!</h2>
-      <div>
-        <button onClick={handleLogout}>Logout</button>
-      </div>
-      <div>
-        <button>Info</button>
-        <div><Link to={`/application/${authorizedUser.id}/todos`}>Todos</Link></div>
-        <div><Link to={`/application/${authorizedUser.id}/posts`}>Posts</Link></div>
-        <div><Link to={`/application/${authorizedUser.id}/albums`}>Albums</Link></div>
-        
-      </div>
-      {/* הצגת התוכן המתאים לכל כפתור / לינק */}
+    // מסירה של המשתנה המצוי ב state לכל הקומפוננטות המצריכות אותו
+  <div>
+  <div>
+    <h1>Welcome, {authorizedUser?.name}!</h1>
+   
+  </div>
+  <div>
+      <button onClick={handleLogout}>Logout</button>
     </div>
+    <div>
+     <div><Link to={`/application/${id}/info`}>Info</Link></div>
+      <div><Link to={`/application/${id}/todos`}>Todos</Link></div>
+      <div><Link to={`/application/${id}/posts`}>Posts</Link></div>
+      <div><Link to={`/application/${id}/albums`}>Albums</Link></div>
+      
+    </div>
+
+</div>
   );
 };
 
-export default Application;
+
+
+

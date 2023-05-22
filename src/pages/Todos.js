@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { Link,useParams } from 'react-router-dom';
 
 export default function Todos() {
   const [todos, setTodos] = useState([]);
   const [selector, setSelector] = useState('');
   // const [isChecked, setIsChecked] = useState(false);
-  const authorizedUser = JSON.parse(localStorage.getItem('authorizedUser'));
-  const id = authorizedUser.id;
+  // const authorizedUser = JSON.parse(localStorage.getItem('authorizedUser'));
+  // const id = authorizedUser.id;
+  const { id } = useParams();
   useEffect(() => {
     fetch(`https://jsonplaceholder.typicode.com/users/${id}/todos`)
       .then((response) => response.json())

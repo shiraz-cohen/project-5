@@ -63,13 +63,15 @@
 //   };
 
 import React, { useEffect, useState } from 'react';
+import { Link,useParams } from 'react-router-dom';
 
 export default function Posts() {
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState([]);
   const [selectedPostId, setSelectedPostId] = useState(null);
-  const authorizedUser = JSON.parse(localStorage.getItem('authorizedUser'));
-  const id = authorizedUser.id;
+  const { id } = useParams();
+  // const authorizedUser = JSON.parse(localStorage.getItem('authorizedUser'));
+  // const id = authorizedUser.id;
 
   useEffect(() => {
     fetch(`https://jsonplaceholder.typicode.com/users/${id}/posts`)
