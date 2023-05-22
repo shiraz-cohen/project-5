@@ -23,7 +23,7 @@
 //         .catch((error) => {
 //           console.error('Error:', error);
 //         });
-        
+
 
 //     };
 
@@ -49,7 +49,7 @@
 //                   "name": {comment.name}<br />
 //                   "email": {comment.email}<br/>
 //                   "body": {comment.body} <br />
-              
+
 //               </li>
 //           ))}
 //         </ul>
@@ -57,14 +57,14 @@
 //           ))}
 //         </ul>
 
-        
+
 //       </div>
 //     );
 //   };
 
 import React, { useEffect, useState } from 'react';
 
-export default function Posts () {
+export default function Posts() {
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState([]);
   const [selectedPostId, setSelectedPostId] = useState(null);
@@ -100,7 +100,7 @@ export default function Posts () {
       <h2>Posts</h2>
       <ul>
         {posts.map((post) => (
-          <li key={post.id}> 
+          <li key={post.id}>
             <button onClick={() => handleBold(post.id)}>bold</button>
             <span
               style={{
@@ -113,9 +113,8 @@ export default function Posts () {
               <ul>
                 {comments.map((comment) => (
                   <li key={comment.id}>
-                   
                     "name": {comment.name}<br />
-                    "email": {comment.email}<br/>
+                    "email": {comment.email}<br />
                     "body": {comment.body} <br />
                   </li>
                 ))}

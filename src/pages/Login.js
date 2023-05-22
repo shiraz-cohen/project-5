@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-
 import './login.css';
 
-export default function Login () {
+export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -34,9 +33,9 @@ export default function Login () {
           //  LocalStorage-שמירת המשתמש ב
           localStorage.setItem('authorizedUser', JSON.stringify(authorizedUser));
           window.location.href = '/Application';
-          
+
         } else {
-            alert('Login failed');
+          alert('Login failed');
           console.log('Login failed');
         }
       })
@@ -44,7 +43,7 @@ export default function Login () {
         console.error('Error:', error);
       });
   };
-  
+
 
   return (
     <div>
@@ -75,22 +74,3 @@ export default function Login () {
     </div>
   );
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
