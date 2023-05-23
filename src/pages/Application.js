@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import './Application.css'
 
 
 export default function Application() {
@@ -14,23 +15,32 @@ export default function Application() {
   };
 
   return (
-    // מסירה של המשתנה המצוי ב state לכל הקומפוננטות המצריכות אותו
-    <div>
+    <div className="container">
       <div>
-        <h1>Welcome, {user.name}!</h1>
+        <h1 className="title">Welcome, {user.name}!</h1>
       </div>
       <div>
-        <button onClick={handleLogout}>Logout</button>
+        <button className="logout-button" onClick={handleLogout}>
+          Logout
+        </button>
       </div>
-      <div>
-        <div><Link to={`/application/${user.id}/info`}>Info</Link></div>
-        <div><Link to={`/application/${user.id}/todos`}>Todos</Link></div>
-        <div><Link to={`/application/${user.id}/posts`}>Posts</Link></div>
-        <div><Link to={`/application/${user.id}/albums`}>Albums</Link></div>
+      <div className="nav-links">
+        <div className="nav-link">
+          <Link to={`/application/${user.id}/info`}>Info</Link>
+        </div>
+        <div className="nav-link">
+          <Link to={`/application/${user.id}/todos`}>Todos</Link>
+        </div>
+        <div className="nav-link">
+          <Link to={`/application/${user.id}/posts`}>Posts</Link>
+        </div>
+        <div className="nav-link">
+          <Link to={`/application/${user.id}/albums`}>Albums</Link>
+        </div>
       </div>
-
     </div>
   );
+  
 };
 
 

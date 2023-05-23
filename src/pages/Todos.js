@@ -4,8 +4,7 @@ import { useParams } from 'react-router-dom';
 export default function Todos() {
   const [todos, setTodos] = useState([]);
   const [selector, setSelector] = useState('');
-  const [check, setCheck] = useState('');
-  
+
   const { id } = useParams();
   useEffect(() => {
     fetch(`https://jsonplaceholder.typicode.com/users/${id}/todos`)
@@ -50,7 +49,26 @@ export default function Todos() {
 
     setTodos(sortedTodos);
   };
-  
+
+  const handleCheckboxChange = (e, todo) => {
+    const updatedTodo = { ...todo, completed: e.target.checked };
+    console.log(updatedTodo);
+    fetch(`https://jsonplaceholder.typicode.com/todos/${todo.id}`, {
+      method: 'PUT',
+      body: JSON.stringify(updatedTodo),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const updatedTodos = todos.map((t) => (t.id === todo.id ? data : t));
+        setTodos(updatedTodos);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  };
 
   return (
     <div>
@@ -64,14 +82,18 @@ export default function Todos() {
       <ul>
         {todos.map((todo) => (
           <li key={todo.id}>
-            <input className="liItem" type="checkbox" id="todo.id"   onChange={(prev) => setCheck(!prev.target.value)} defaultChecked={todo.completed} />
+            <input
+              className="liItem"
+              type="checkbox"
+              id={todo.id}
+              checked={todo.completed}
+              onChange={(e) => handleCheckboxChange(e, todo)}
+            />
             {todo.title}
             <br />
           </li>
         ))}
       </ul>
-
     </div>
   );
-
 };
