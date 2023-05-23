@@ -11,10 +11,10 @@ export default function Photos() {
   useEffect(() => {
     console.log("fach");
     setLoading(true);
-    fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${id}&_limit=${count}`)
+    fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${id}&&_limit=10&_start=${count}`)
       .then((response) => response.json())
       .then((data) => {
-        setPhotos(data);
+        setPhotos((prev)=>[...prev, ...data]);
         setLoading(false);
       })
       .catch((error) => {
