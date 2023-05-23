@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link,useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 export default function Todos() {
   const [todos, setTodos] = useState([]);
   const [selector, setSelector] = useState('');
-  // const [isChecked, setIsChecked] = useState(false);
-  // const authorizedUser = JSON.parse(localStorage.getItem('authorizedUser'));
-  // const id = authorizedUser.id;
+  const [check, setCheck] = useState('');
+  
   const { id } = useParams();
   useEffect(() => {
     fetch(`https://jsonplaceholder.typicode.com/users/${id}/todos`)
@@ -22,7 +21,7 @@ export default function Todos() {
   }, [selector]);
 
   const sortTodos = () => {
-    let sortedTodos = [...todos]; // יצירת עותק של ה־todos
+    let sortedTodos = [...todos]; //  ־todos יצירת עותק של 
 
     switch (selector) {
       case 'serial':
@@ -51,6 +50,7 @@ export default function Todos() {
 
     setTodos(sortedTodos);
   };
+  
 
   return (
     <div>
@@ -64,7 +64,7 @@ export default function Todos() {
       <ul>
         {todos.map((todo) => (
           <li key={todo.id}>
-            <input className="liItem" type="checkbox" id="todo.id" defaultChecked={todo.completed} />
+            <input className="liItem" type="checkbox" id="todo.id"   onChange={(prev) => setCheck(!prev.target.value)} defaultChecked={todo.completed} />
             {todo.title}
             <br />
           </li>

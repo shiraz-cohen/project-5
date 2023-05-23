@@ -1,13 +1,12 @@
 import React from "react";
-import { UserContext } from "../App";
-import { useContext } from "react";
+
 
 export default function Info  ()  {
-    const authorizedUser = useContext(UserContext);
-    const { name, username, email, phone, website, address, company } = authorizedUser;
+    const user = JSON.parse(localStorage.getItem('user'));
+    const { name, username, email, phone, website, address, company } = user;
     
 
-    console.log(authorizedUser, "This is the userInfo data");
+    console.log(user, "This is the userInfo data");
 
 return(
     <div className="user-card">
