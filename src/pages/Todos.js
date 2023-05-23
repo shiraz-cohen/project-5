@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import './Todos.css';
 
 export default function Todos() {
   const [todos, setTodos] = useState([]);
@@ -20,7 +21,7 @@ export default function Todos() {
   }, [selector]);
 
   const sortTodos = () => {
-    let sortedTodos = [...todos]; //  ־todos יצירת עותק של 
+    let sortedTodos = [...todos];
 
     switch (selector) {
       case 'serial':
@@ -71,7 +72,7 @@ export default function Todos() {
   };
 
   return (
-    <div>
+    <div className="todos-container">
       <h2>Todos</h2>
       <select value={selector} onChange={(e) => setSelector(e.target.value)}>
         <option value="serial">serial</option>
@@ -79,7 +80,7 @@ export default function Todos() {
         <option value="performance">performance</option>
         <option value="alphabetical">alphabetical</option>
       </select>
-      <ul>
+      <ul className="todos-list">
         {todos.map((todo) => (
           <li key={todo.id}>
             <input
@@ -89,8 +90,7 @@ export default function Todos() {
               checked={todo.completed}
               onChange={(e) => handleCheckboxChange(e, todo)}
             />
-            {todo.title}
-            <br />
+            <span className="todo-title">{todo.title}</span>
           </li>
         ))}
       </ul>

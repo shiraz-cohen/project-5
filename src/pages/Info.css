@@ -1,0 +1,25 @@
+
+
+.user-card {
+    max-width: 600px;
+    margin-top: 20px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .user-header {
+    margin-bottom: 10px;
+  }
+  
+  .user-header h2 {
+    font-size: 24px;
+    margin-bottom: 5px;
+  }
+  
+  .user-body p {
+    margin-bottom: 5px;
+  }
+  

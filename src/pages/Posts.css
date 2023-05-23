@@ -1,0 +1,39 @@
+.posts-container {
+  margin: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.posts-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.post-item {
+  margin-bottom: 20px;
+}
+
+.post-title {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.post-body {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.comments-list {
+  margin-top: 10px;
+  padding-left: 20px;
+  list-style-type: none;
+}
+
+.comment-item {
+  margin-bottom: 10px;
+}
+
+
+
+.comment-body {
+  margin-top: 5px;
+}

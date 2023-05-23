@@ -15,30 +15,40 @@ export default function Application() {
   };
 
   return (
-    <div className="container">
-      <div>
-        <h1 className="title">Welcome, {user.name}!</h1>
+      <div className="container">
+        <div>
+          <h1 className="title">Welcome, {user.name}!</h1>
+        </div>
+        <div>
+          <button className="logout-button" onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
+        <div className="nav-links">
+          <div className="button-wrapper">
+            <Link to={`/application/${user.id}/info`} className="button">
+              Info
+            </Link>
+          </div>
+          <div className="button-wrapper">
+            <Link to={`/application/${user.id}/todos`} className="button">
+              Todos
+            </Link>
+          </div>
+          <div className="button-wrapper">
+            <Link to={`/application/${user.id}/posts`} className="button">
+              Posts
+            </Link>
+          </div>
+          <div className="button-wrapper">
+            <Link to={`/application/${user.id}/albums`} className="button">
+              Albums
+            </Link>
+          </div>
+        </div>
       </div>
-      <div>
-        <button className="logout-button" onClick={handleLogout}>
-          Logout
-        </button>
-      </div>
-      <div className="nav-links">
-        <div className="nav-link">
-          <Link to={`/application/${user.id}/info`}>Info</Link>
-        </div>
-        <div className="nav-link">
-          <Link to={`/application/${user.id}/todos`}>Todos</Link>
-        </div>
-        <div className="nav-link">
-          <Link to={`/application/${user.id}/posts`}>Posts</Link>
-        </div>
-        <div className="nav-link">
-          <Link to={`/application/${user.id}/albums`}>Albums</Link>
-        </div>
-      </div>
-    </div>
+    
+    
   );
   
 };
