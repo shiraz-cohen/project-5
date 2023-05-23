@@ -43,13 +43,12 @@ export default function Posts() {
               style={{
                 fontWeight: selectedPostId === post.id ? 'bold' : 'normal',
               }}>
-               <div className="post-title">{post.title}</div><br />
-               <div className="post-body">
-               {post.body}
-            </div>
-              
+              <div className="post-title">{post.title}</div><br />
+              <div className="post-body">
+                {post.body}
+              </div>
             </span>
-           
+
             {selectedPostId === post.id && (
               <ul className="comments-list">
                 {comments.map((comment) => (
