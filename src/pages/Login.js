@@ -2,12 +2,10 @@
 import React, { useState } from 'react';
 import './login.css';
 import { useNavigate } from 'react-router-dom';
-
-
 export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -18,34 +16,29 @@ export default function Login() {
   };
 
   const handleLogin = () => {
-    fetch('https://jsonplaceholder.typicode.com/users')
+    const url = `https://jsonplaceholder.typicode.com/users?username=${username}&lat=${password}`;
+    fetch(url)
       .then((response) => response.json())
       .then((users) => {
-        const user = users.find((user) => {
-          const lat = user.address?.geo?.lat;
-          if (lat) {
-            const lastFourDigits = lat.substring(lat.length - 4);
-            return lastFourDigits === password;
-          }
-          return false;
+        const filteredUsers = users.filter((user) => {
+          return user.username === username && user.address?.geo?.lat?.endsWith(password);
         });
 
-        if (user) {
-          console.log('Login successful');
-          console.log('Authorized User:', user);
+        if (filteredUsers.length > 0) {
+          const user = filteredUsers[0];
 
           localStorage.setItem('user', JSON.stringify(user));
           navigate(`/Application/${user.id}`);
 
         } else {
           alert('Login failed');
-          console.log('Login failed');
         }
       })
       .catch((error) => {
-        console.error('Error:', error);
+        alert('Error:', error);
       });
   };
+
 
   return (
     <div>

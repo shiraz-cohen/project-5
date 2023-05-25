@@ -4,7 +4,7 @@ import './Photos.css';
 
 export default function Photos() {
   const [photos, setPhotos] = useState([]);
-  const [count, setCount] = useState(10);
+  const [count, setCount] = useState(0);
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
 

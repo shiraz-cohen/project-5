@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import './Posts.css'
 
@@ -6,6 +6,7 @@ export default function Posts() {
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState([]);
   const [selectedPostId, setSelectedPostId] = useState(null);
+  const [commentsMap, setCommentsMap] = useState({}); //keep comments to avoid Unnecessary readings to the server
   const { id } = useParams();
 
   useEffect(() => {
@@ -17,20 +18,43 @@ export default function Posts() {
       });
   }, [id]);
 
+  // const handleBold = (postId) => {
+  //   if (selectedPostId === postId) {
+  //     setSelectedPostId(null);
+  //     setComments([]);
+  //   } else {
+  //     setSelectedPostId(postId);
+  //     fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
+  //       .then((response) => response.json())
+  //       .then((data) => setComments(data))
+  //       .catch((error) => {
+  //         console.error('Error:', error);
+  //       });
+  //   }
+  // };
+
   const handleBold = (postId) => {
-    if (selectedPostId === postId) {
+    if (selectedPostId === postId) { // For the second click of the user to hide the comments and to cancel bold mode
       setSelectedPostId(null);
       setComments([]);
     } else {
       setSelectedPostId(postId);
-      fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
-        .then((response) => response.json())
-        .then((data) => setComments(data))
-        .catch((error) => {
-          console.error('Error:', error);
-        });
+      if (commentsMap[postId]) { //check if postId who selected already exist
+        setComments(commentsMap[postId]);
+      } else {
+        fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
+          .then((response) => response.json())
+          .then((data) => {
+            setComments(data);
+            setCommentsMap({ ...commentsMap, [postId]: data });
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+      }
     }
   };
+
 
   return (
     <div className="posts-container">
