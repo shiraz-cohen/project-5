@@ -18,21 +18,6 @@ export default function Posts() {
       });
   }, [id]);
 
-  // const handleBold = (postId) => {
-  //   if (selectedPostId === postId) {
-  //     setSelectedPostId(null);
-  //     setComments([]);
-  //   } else {
-  //     setSelectedPostId(postId);
-  //     fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
-  //       .then((response) => response.json())
-  //       .then((data) => setComments(data))
-  //       .catch((error) => {
-  //         console.error('Error:', error);
-  //       });
-  //   }
-  // };
-
   const handleBold = (postId) => {
     if (selectedPostId === postId) { // For the second click of the user to hide the comments and to cancel bold mode
       setSelectedPostId(null);

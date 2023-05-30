@@ -14,7 +14,7 @@ export default function Photos() {
     fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${id}&&_limit=10&_start=${count}`)
       .then((response) => response.json())
       .then((data) => {
-        setPhotos((prev)=>[...prev, ...data]);
+        setPhotos((prev) => [...prev, ...data]);
         setLoading(false);
       })
       .catch((error) => {
@@ -45,8 +45,8 @@ export default function Photos() {
           </div>
         </div>
       ) : (
-       
-         <p>No photos found</p>
+
+        <p>No photos found</p>
       )}
     </div>
   );

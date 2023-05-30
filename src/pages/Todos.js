@@ -53,7 +53,6 @@ export default function Todos() {
 
   const handleCheckboxChange = (e, todo) => {
     const updatedTodo = { ...todo, completed: e.target.checked };
-    console.log(updatedTodo);
     fetch(`https://jsonplaceholder.typicode.com/todos/${todo.id}`, {
       method: 'PUT',
       body: JSON.stringify(updatedTodo),
