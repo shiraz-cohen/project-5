@@ -1,70 +1,110 @@
-# Getting Started with Create React App
+# React REST API Project - User Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the repository of the **React REST API Project**, an interactive platform that consumes data from an external API to present user-specific information in a dynamic dashboard.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+🌟 **Features**
 
-### `npm start`
+* **User Authentication:**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  * Login form with username and password.
+  * Password validation based on the user's geolocation data from the API.
+  * Session persistence using Local Storage.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* **Dynamic User Dashboard:**
 
-### `npm test`
+  * Personalized homepage displaying user information and navigation links.
+  * Accessible pages: Info, Todos, Posts, Albums, Logout.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* **Resource Display:**
 
-### `npm run build`
+  * **Info Page:** Displays complete user details.
+  * **Todos:** List of user's tasks with completion toggles and sorting.
+  * **Posts:** User's posts with nested comments on selection.
+  * **Albums:** List of user's albums with nested photos, including a photo slider.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* **Dynamic Routing:**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  * Clean and REST-like URL structures, e.g., `/users/2/albums/5/photos`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* **Caching & Proxy:**
 
-### `npm run eject`
+  * Optimized API consumption with caching strategies.
+  
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+🛠️ **Technologies Used**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+* React
+* React Router
+* React Hooks (useState, useEffect)
+* React Forms
+* JavaScript (ES6+)
+* Fetch API with Async-Await
+* Local Storage for session persistence
+* CSS 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+📌 **Usage Instructions**
+To run the project locally:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. **Clone the repository:**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+git clone https://github.com/shiraz-cohen/project-5.git
+```
 
-### Code Splitting
+2. **Install dependencies:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+cd project-5
+npm install
+```
 
-### Analyzing the Bundle Size
+3. **Run the project:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+npm start
+```
 
-### Making a Progressive Web App
+4. Open your browser and navigate to:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
+http://localhost:3000
+```
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+🔐 **Login Instructions**
 
-### Deployment
+* **Username:** Any username from the Users API: [https://jsonplaceholder.typicode.com/users](https://jsonplaceholder.typicode.com/users)
+* **Password:** The **last 4 digits of the `lat` field** from the user's address geo-location.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+For example, for user `Bret`:
 
-### `npm run build` fails to minify
+```json
+"geo": {
+  "lat": "-37.3159"
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Password will be: **3159**.
+
+---
+
+🔗 **Live Website**
+Check out the live project here:
+
+> [**link**](https://shiraz-cohen.github.io/project-5/)
+
+---
+
+✅ **Status**
+The project is completed and ready for deployment.
+
+---
+
+Thank you for visiting the React REST API Project repository! 😊
