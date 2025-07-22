@@ -12,7 +12,7 @@ import Info from "./pages/Info";
 //import NotFound from "./pages/NotFound";
 
 function App() {
-  
+
 
   return (
     <Routes>
@@ -23,7 +23,6 @@ function App() {
       <Route path="/application/:id/todos" element={<Todos />} />
       <Route path="/application/:id/albums" element={<Albums />} />
       <Route path="/application/:id/albums/:id/photos" element={<Photos />} />
-      {/* <Route path="*" element={<NotFound/>} />  */}
     </Routes>
   )
 }
